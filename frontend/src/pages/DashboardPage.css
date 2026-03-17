@@ -1,0 +1,96 @@
+.dashboard { display: flex; flex-direction: column; gap: 28px; }
+
+.dashboard__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.dashboard__greeting {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.dashboard__name {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dashboard__sub { font-size: 14px; color: var(--text-3); }
+
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stats-skeleton {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Progress */
+.dashboard__progress-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.dashboard__progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.dashboard__progress-label { font-size: 14px; font-weight: 600; color: var(--text); }
+.dashboard__progress-pct { font-size: 13px; color: var(--accent-2); font-weight: 600; }
+
+.dashboard__progress-bar {
+  height: 8px;
+  background: var(--bg-3);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.dashboard__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dashboard__progress-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* Section */
+.dashboard__section { display: flex; flex-direction: column; gap: 16px; }
+.dashboard__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard__section-title { font-size: 17px; font-weight: 700; color: var(--text); }
+.dashboard__view-all {
+  background: none;
+  color: var(--accent-2);
+  font-size: 13px;
+  font-weight: 500;
+}
+.dashboard__view-all:hover { color: var(--accent); text-decoration: underline; }
+
+.dashboard__tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .dashboard__greeting { font-size: 20px; }
+  .dashboard__stats { grid-template-columns: 1fr 1fr; }
+}

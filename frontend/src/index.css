@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --bg-2: #111118;
+  --bg-3: #1a1a24;
+  --bg-card: #14141e;
+  --border: #2a2a3a;
+  --border-light: #333348;
+
+  --accent: #6c63ff;
+  --accent-2: #a78bfa;
+  --accent-glow: rgba(108, 99, 255, 0.25);
+
+  --success: #10d98e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  --text: #e8e8f0;
+  --text-2: #9898b0;
+  --text-3: #55556a;
+
+  --status-pending: #f59e0b;
+  --status-in_progress: #3b82f6;
+  --status-completed: #10d98e;
+  --status-cancelled: #ef4444;
+
+  --priority-low: #10d98e;
+  --priority-medium: #f59e0b;
+  --priority-high: #ef4444;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.6);
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition);
+}
+
+input, textarea, select {
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: var(--transition);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ── Utility ──────────────────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fade-in { animation: fadeIn 0.35s ease both; }
+
+/* ── Spinner ───────────────────────────────────────────────── */
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Badge ───────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.badge--pending    { background: rgba(245,158,11,0.12); color: var(--status-pending); }
+.badge--in_progress{ background: rgba(59,130,246,0.12); color: var(--status-in_progress); }
+.badge--completed  { background: rgba(16,217,142,0.12); color: var(--status-completed); }
+.badge--cancelled  { background: rgba(239,68,68,0.12);  color: var(--status-cancelled); }
+.badge--low        { background: rgba(16,217,142,0.12); color: var(--priority-low); }
+.badge--medium     { background: rgba(245,158,11,0.12); color: var(--priority-medium); }
+.badge--high       { background: rgba(239,68,68,0.12);  color: var(--priority-high); }
+
+/* ── Page overlay loading ─────────────────────────────────── */
+.page-loading {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.empty-state {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 64px 24px; text-align: center;
+  gap: 12px;
+}
+.empty-state__icon { font-size: 48px; opacity: 0.3; }
+.empty-state__title { font-size: 18px; color: var(--text-2); }
+.empty-state__sub   { font-size: 14px; color: var(--text-3); }
