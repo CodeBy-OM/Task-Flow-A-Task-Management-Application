@@ -85,16 +85,9 @@ taskapp/
 
 ## Quick Start (Local Development)
 
-### Prerequisites
-- Node.js 18+
-- npm 9+
-
 ### 1. Install dependencies
 
 ```bash
-# From project root
-npm run install:all
-# Or manually:
 cd backend && npm install
 cd ../frontend && npm install
 ```
